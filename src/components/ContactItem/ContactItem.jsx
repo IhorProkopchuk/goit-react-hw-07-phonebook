@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contactsSlice';
+import { fetchContacts, deleteContact } from '../../redux/operations';
 import PropTypes from 'prop-types';
 import styles from './ContactItem.module.css';
 
 const ContactItem = ({ contact }) => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
+  const onDeleteContact = id => {
+    dispatch(deleteContact(id)); 
+  };
+
 
   return (
     <div className={styles.container}>
@@ -14,7 +23,7 @@ const ContactItem = ({ contact }) => {
         <div className={styles.number}>{contact.number}</div>
         <button
           className={styles.btn}
-          onClick={() => dispatch(deleteContact(contact.id))}
+          onClick={() => dispatch(onDeleteContact(contact.id))}
         >
           Delete
         </button>
