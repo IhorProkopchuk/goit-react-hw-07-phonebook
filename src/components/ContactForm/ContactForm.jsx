@@ -24,7 +24,8 @@ const ContactForm = () => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    const existingContact = contacts.find(contact => contact.name === name);
+    const existingContact = contacts.find(
+      contact => contact.name.toLowerCase() === name.toLowerCase());
     const existingNumber = contacts.find(contact => contact.phone === phone);
 
     if (existingContact) {
