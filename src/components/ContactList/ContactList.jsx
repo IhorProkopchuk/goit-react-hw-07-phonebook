@@ -6,6 +6,7 @@ import {
   selectIsLoading,
 } from '../../redux/selectors';
 import { fetchContacts, deleteContact } from '../../redux/operations';
+import { Loader } from '../Loader/Loader';
 import styles from './ContactList.module.css';
 
 export const ContactList = () => {
@@ -27,11 +28,12 @@ export const ContactList = () => {
     <div className={styles.container}>
       {isLoading
         ? (
-        <div>Loading...</div>
+        <Loader />
         )
-        : error ? (
+        : error
+        ? (
         <div>Error: {error}</div>
-        )
+          )
         : (
         <ul className={styles.list}>
           {filteredContacts.map(contact => (
