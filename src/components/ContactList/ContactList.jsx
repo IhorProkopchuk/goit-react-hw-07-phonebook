@@ -20,6 +20,7 @@ export const ContactList = () => {
 
   const onDeleteContact = id => {
     dispatch(deleteContact(id));
+    
   };
 
   return (

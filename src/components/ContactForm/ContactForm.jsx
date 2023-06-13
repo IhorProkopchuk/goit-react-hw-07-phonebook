@@ -9,14 +9,14 @@ const ContactForm = () => {
   const contacts = useSelector(selectContacts);
 
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setPhone] = useState('');
 
   const handleChange = event => {
     const { name, value } = event.target;
     if (name === 'name') {
       setName(value);
-    } else if (name === 'number') {
-      setNumber(value);
+    } else if (name === 'phone') {
+      setPhone(value);
     }
   };
 
@@ -25,25 +25,25 @@ const ContactForm = () => {
     event.preventDefault();
 
     const existingContact = contacts.find(contact => contact.name === name);
-    const existingNumber = contacts.find(contact => contact.number === number);
+    const existingNumber = contacts.find(contact => contact.phone === phone);
 
     if (existingContact) {
       alert(`${name} is already in contacts.`);
       setName('');
-      setNumber('');
+      setPhone('');
       return;
     }
 
     if (existingNumber) {
-      alert(`The number ${number} is already associated with another contact.`);
+      alert(`The number ${phone} is already associated with another contact.`);
       setName('');
-      setNumber('');
+      setPhone('');
       return;
     }
 
-    dispatch(addContact({ name, number }));
+    dispatch(addContact({ name, phone }));
     setName('');
-    setNumber('');
+    setPhone('');
   };
 
   return (
@@ -71,7 +71,7 @@ const ContactForm = () => {
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
-            value={number}
+            value={phone}
             onChange={handleChange}
           />
         </label>
