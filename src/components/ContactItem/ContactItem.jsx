@@ -7,10 +7,6 @@ import styles from './ContactItem.module.css';
 const ContactItem = ({ contact }) => {
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(fetchContacts());
-  // }, [dispatch]);
-
   const onDeleteContact = id => {
     dispatch(deleteContact(id)); 
   };
