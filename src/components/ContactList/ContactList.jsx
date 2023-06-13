@@ -24,11 +24,14 @@ export const ContactList = () => {
 
   return (
     <div className={styles.container}>
-      {isLoading ? (
+      {isLoading
+        ? (
         <div>Loading...</div>
-      ) : error ? (
+        )
+        : error ? (
         <div>Error: {error}</div>
-      ) : (
+        )
+        : (
         <ul className={styles.list}>
           {filteredContacts.map(contact => (
             <li key={contact.id} className={styles.item}>
