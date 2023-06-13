@@ -1,23 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectError,
-  selectFilteredContacts,
-  selectIsLoading,
-} from '../../redux/selectors';
-import { fetchContacts, deleteContact } from '../../redux/operations';
-import { Loader } from '../Loader/Loader';
+import { selectFilteredContacts } from '../../redux/selectors';
+import { deleteContact } from '../../redux/operations';
+//import { Loader } from '../Loader/Loader';
 import styles from './ContactList.module.css';
 
 export const ContactList = () => {
   const filteredContacts = useSelector(selectFilteredContacts);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  // const isLoading = useSelector(selectIsLoading);
+  // const error = useSelector(selectError);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchContacts());
+  // }, [dispatch]);
 
   const onDeleteContact = id => {
     dispatch(deleteContact(id));
@@ -26,7 +22,7 @@ export const ContactList = () => {
 
   return (
     <div className={styles.container}>
-      {isLoading
+      {/* {isLoading
         ? (
         <Loader />
         )
@@ -34,7 +30,7 @@ export const ContactList = () => {
         ? (
         <div>Error: {error}</div>
           )
-        : (
+        : ( */}
         <ul className={styles.list}>
           {filteredContacts.map(contact => (
             <li key={contact.id} className={styles.item}>
@@ -49,7 +45,6 @@ export const ContactList = () => {
             </li>
           ))}
         </ul>
-      )}
     </div>
   );
 };

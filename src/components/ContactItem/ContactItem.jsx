@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchContacts, deleteContact } from '../../redux/operations';
+import { deleteContact } from '../../redux/operations';
 import PropTypes from 'prop-types';
 import styles from './ContactItem.module.css';
 
 const ContactItem = ({ contact }) => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchContacts());
+  // }, [dispatch]);
 
   const onDeleteContact = id => {
     dispatch(deleteContact(id)); 
